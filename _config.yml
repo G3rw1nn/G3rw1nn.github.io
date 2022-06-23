@@ -26,15 +26,15 @@ title: HomeLab Test                     # the main title
 tagline: My HomeLab Documentation   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
-  A minimal, responsive, and powerful Jekyll theme for presenting professional writing.
+  My HomeLab Documentation
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: 'https://G3rw1nn.github.io'
 
 github:
   username: G3rw1nn             # change to your github username
 
-twitter:
-  username: twitter_username            # change to your twitter username
+##twitter:
+#  username: twitter_username            # change to your twitter username
 
 social:
   # Change to your full name.
@@ -43,8 +43,8 @@ social:
   email: g3rw1n@protonmail.com             # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/username      # change to your twitter homepage
-    - https://github.com/username       # change to your github homepage
+    # - https://twitter.com/username      # change to your twitter homepage
+    # - https://github.com/username       # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
