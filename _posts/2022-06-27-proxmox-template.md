@@ -36,7 +36,8 @@ wget -O $IMG_NAME $SRC_IMG
 
 # Ubuntu cloud img doesn't include qemu-guest-agent required for packer to get IP details from proxmox
 # Add any additional packages you want installed in the template
-virt-customize --install qemu-guest-agent -a $IMG_NAME
+# virt-customize --install qemu-guest-agent -a $IMG_NAME
+virt-customize -a $IMG_NAME --install qemu-guest-agent
 
 # Create cloud-init enabled Proxmox VM with DHCP addressing
 qm create $VMID --name $TEMPL_NAME --memory $MEM --net0 virtio,bridge=$NET_BRIDGE
