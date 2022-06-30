@@ -50,6 +50,8 @@ qm set $VMID --boot c --bootdisk scsi0
 qm set $VMID --serial0 socket --vga serial0
 qm set $VMID --ipconfig0 ip=dhcp
 qm resize $VMID scsi0 $DISK_SIZE
+# enable qume-guest-agent host
+qm set $VMID --agent 1
 
 # Convert to template
 qm template $VMID
