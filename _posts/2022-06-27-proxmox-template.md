@@ -26,9 +26,12 @@ DISK_SIZE="8G"
 DISK_STOR="local-lvm"
 NET_BRIDGE="vmbr0"
 
+# Below step should be ecexuted only once
+# To install MacOS use brew install libguestfs-tools
+# to check if installed run libguestfs-test-tool --v
 # Install libguesetfs-tools to modify cloud image
-apt update
-apt install -y libguestfs-tools
+# apt update
+# apt install -y libguestfs-tools
 
 # Download kvm image and rename
 # Ubuntu img is actually qcow2 format and Proxmox doesn't like wrong extensions
@@ -36,8 +39,7 @@ wget -O $IMG_NAME $SRC_IMG
 
 # Ubuntu cloud img doesn't include qemu-guest-agent required for packer to get IP details from proxmox
 # Add any additional packages you want installed in the template
-# virt-customize --install qemu-guest-agent -a $IMG_NAME
-virt-customize -a $IMG_NAME --install qemu-guest-agent
+virt-customize --install qemu-guest-agent -a $IMG_NAME
 
 # Create cloud-init enabled Proxmox VM with DHCP addressing
 qm create $VMID --name $TEMPL_NAME --memory $MEM --net0 virtio,bridge=$NET_BRIDGE
@@ -78,3 +80,14 @@ To execute the script run:
  ```bash
  ./proxmox-create-ubuntu20.04-cloud-template.sh
  ```
+ 
+ # Execute the script via ssh
+ 
+ Run the below command
+ ```bash
+ ssh user@remotehost 'bash -s' < script.sh
+ ```
+
+The bash -s command means “execute the following commands in a new bash session.” The -s flag makes it read from standard input, and the < script.sh bit will read a local script file into standard input.
+
+The file is read entirely locally, and all gets sent to the remote server without uploading anything. This does require you to put all the commands into a separate script file.
